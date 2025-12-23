@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-# \# RS485InterfaceBoard
 
-
-=======
-RS485InterfaceBoard
->>>>>>> 5e1261044010003816172606a3a00cf4bc635dc3
+# RS485InterfaceBoard
 
 A unit to interface various RS485 sensors with a simple serial interface via an Arduino based circuit.
 
