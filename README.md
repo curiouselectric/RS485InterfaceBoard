@@ -15,7 +15,7 @@ Wire up your vane and anemometer. Power the unit up. Then it will save the avera
 
 
 
-!\[Overview](https://github.com/curiouselectric/WindSensor/blob/main/Wind%20Sensor%20Instructions/Images/wind%20sensor%20overview.png?raw=true)
+[Overview](https://github.com/curiouselectric/WindSensor/blob/main/Wind%20Sensor%20Instructions/Images/wind%20sensor%20overview.png?raw=true)
 
 
 
