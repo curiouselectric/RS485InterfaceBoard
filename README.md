@@ -15,7 +15,7 @@ Wire up your vane and anemometer. Power the unit up. Then it will save the avera
 
 
 
-[Overview](https://github.com/curiouselectric/WindSensor/blob/main/Wind%20Sensor%20Instructions/Images/wind%20sensor%20overview.png?raw=true)
+![Overview](https://github.com/curiouselectric/WindSensor/blob/main/Wind%20Sensor%20Instructions/Images/wind%20sensor%20overview.png?raw=true)
 
 
 
@@ -33,11 +33,7 @@ It was designed as a relatively simple interface to remove the need for monitori
 
 The anemometer can either be a pulse output, NPN output or hall-effect output. The unit reads digital pulses, with circuitry on the unit converting the hall effect output to pulses. (Note: This unit cannot read 0-5V or analog output sensors).
 
-
-
 The unit stores average wind speeds for 1 second, 10 second, 1 min, 10 min and 1 hour values. It also records the maximum and minimum wind speed.
-
-
 
 The unit converts the pulses into a real wind speed using a y=mx+c linear conversion, where y is the wind speed and c is the number of pulses. m and c are stored in EEPROM and have default values of m=1 and c=0. These are floats and can be changed as required through the serial interface. Any updated values are stored in EEPROM. If the pulses are zero then the output is also zero (no matter what the y=mc+c function is). This stops a reading of 'c' when the pulse data is zero.
 
@@ -73,7 +69,7 @@ In this mode then the unit responds to serial requests made. You ask the sensor 
 
 
 
-!\[Response](https://github.com/curiouselectric/WindSensor/blob/main/Wind%20Sensor%20Instructions/Images/wind%20sensor%20response.png?raw=true)
+![Response](https://github.com/curiouselectric/WindSensor/blob/main/Wind%20Sensor%20Instructions/Images/wind%20sensor%20response.png?raw=true)
 
 
 
@@ -85,7 +81,7 @@ In this mode then the unit regularly sends data via the serial connunication. It
 
 
 
-!\[Broadcast](https://github.com/curiouselectric/WindSensor/blob/main/Wind%20Sensor%20Instructions/Images/wind%20sensor%20broadcast.png?raw=true)
+![Broadcast](https://github.com/curiouselectric/WindSensor/blob/main/Wind%20Sensor%20Instructions/Images/wind%20sensor%20broadcast.png?raw=true)
 
 
 
@@ -223,163 +219,93 @@ Install the bootloader using an Arduino as an ISP. https://www.arduino.cc/en/Tut
 
 Wire up your arduino and an ISP 3x2 header pin onto the wind sensor PCB.
 
-
-
 Choose the "ATMega328" option with the "External 8MHz Oscillator" set.
-
-
 
 You can then use the 'Burn Bootloader' option within 'Tools' in the Arduino IDE. This will install the Minicore bootloader.
 
-
-
-
-
 ## Program via Arduino IDE
-
-
 
 To program it then MiniCore is used:
 
-
-
 Install MiniCore from here: https://github.com/MCUdude/MiniCore
-
-
 
 Add to preferences and then board manager.
 
-
-
 You can then upload code by choosing the "ATMega328" option with the "External 8MHz Oscillator" set.
 
-
-
 # Serial Data and Commands
-
-
 
 It returns the average values and information when requested on serial port.
 
 At all other times then the unit is asleep.
 
-
-
 ## Wind Speed data:
 
 Request: “aaI0WSA4#”  ("aaI0WSA4?19#" with CRC)  Where 0 is an ID from 0-7 set by solder on PCB. 4 is the averaging period (0=1s, 1=10s, 2 = 60s, 3 = 600s, 4=3600s)
 
-
-
 Returns: "aaI0WSA4:3.00:5.67:1.23#"  // Where 4 is the averaging period, 3.00 is the data within the averaging period, 5.67 is the maximum and 1.23 is the minimum.
 
- 
-
-\## Wind Speed data minimum:
+## Wind Speed data minimum:
 
 Request: “aaI0WSMN#” ("aaI0WSMN?84#" with CRC) - does not matter what averaging period. min/max are just the min/max seen.
 
-
-
 Returns: "aaI0WSMN:3.00#"  // Where 3.00 is the data + CRC if requested
-
- 
 
 ## Wind Speed data maximum:
 
 Request: “aaI0WSMX#”  ("aaI0WSMX?e6#" with CRC) - does not matter what averaging period. min/max are just the min/max seen.
 
-
-
 Returns: "aaI0WSMX:3.00#"  // Where 3.00 is the data + CRC if requested
-
-
 
 ## What is Anemometer conversion?:
 
 Request: "aaI0WSCON#" ("aaI0WSCON?41#" with CRC)
 
-
-
 Returns: "aaI0STWSCONm123.4c567.89#" (from stored values) + CRC if requested
-
- 
 
 ## Set the Anemometer conversion:
 
 Request: "aaI0WSSTm123.4c567.89#"  ("aaI0WSSTm123.4c567.89?38#" with CRC) Where 123.4 is the gradient and 567.89 is the constant (y=mx+c)
 
-
-
 Returns: "aaI0STWSSETm123.4c567.89#" (set to the new values) + CRC if requested
 
-
-
 Request: "aaI0WSSTm1c0#" or "aaI0WSSTm1c0?da#" with CRC to set m= 1 and c=0. This is useful for initial testing.
-
- 
 
 ## Wind Vane data:
 
 Request: “aaI0WV#”  ("aaI0WV?b4#" with CRC) Where 0 is an ID from 0-7 set by solder on PCB.
 
-
-
 Returns:    The instantaneuous direction AND the direction array data
 
- 
-
 Returns:    "aaI0WV=W:0.00:0.00:0.00:0.00:0.00:0.00:62.00:0.00#" + CRC if requested
-
- 
 
 ## Reset the max, min and wind vane array:
 
 Request: "aaI0RESET#" ("aaI0RESET?d9#" with CRC)
 
-
-
 Returns: "aaRESET#"
-
-
 
 ## Set the unit to broadcast:
 
 Request: "aaI0SEND?#" where ? is an int (0)= 1s data, (1)= 10s data, (2)= 60s/1 min data, (3)= 600s/10 min data, (4)= 3600s/1hr data, (5)= NO data
 
-
-
 Returns: "aaI0SENDOK#" + CRC if requested
-
-
 
 You can also set the unit to broadcast using the user switch. Press the button for around 0.5s or more then release. This will go through the boradcast modes from 0-1-2-3-4-5 then back round to 0. The LED will flash the number of times for the setting (so send = 0 the unit will not flash, but data will appear within 1 second!).
 
-
-
 If the unit is in broadcast mode then the minimum and maximum wind speeds and the wind vane data are all reset each time period.
-
-
 
 ## What is baud rate?:
 
 Request: "aaI0BD#" ("aaI0BD?dc#" with CRC)
 
-
-
 Returns: "aaBD9600#"  // Where 9600 is the baud rate + CRC if requested
-
- 
 
 ## Set Baud Rate:
 
 Request: "aaI0STBD\*#"  Where \* is (0)1200, (1)2400, (2)9600, (3)57600, (4)115200
 
-
-
 Returns: "aaBD9600#"   // Where 9600 is the baud rate + CRC if requested
-
-
 
 ## What is ID?:
 
@@ -409,58 +335,35 @@ NC     |Solder |Solder | 6
 
 Solder |Solder |Solder | 7
 
-
-
 ## Enter vane training mode:
 
 Request: "aaI0VT#" ("aaI0VT?af#" with CRC)
 
-
-
 Returns: Enter the vane training routine - use button to go through the different directions and set the values.
-
-
 
 The serial port will show which direction the vane should be pointing at.
 
-
-
 Move the vane to this position and press the user switch (for around 0.5 seconds).
-
-
 
 The serial port will show then next direction and will got N, NE, E, SE, S, SW, W, NW and then end.
 
-
-
 The unit will also send "aaI0WVOK=NW" + CRC +"#" to report back which direction the unit is now being trained.
-
-
 
 When it ends this data is stored within the unit and the direction 'bands' are recaluclated.
 
-
-
 ## Serial 'Button' press
 
-
-
 The command "aaI0BUTTON" + CRC + "#" will act just like a button press. This is for control via a data logger serial port without access to the physical switch.
-
-
 
 ## Add CRC check:
 
 Within the config of the firmware a CRC (Cyclic Redundancy Check) can be added to the data (or not!).
 
-
 Set this true using the flag in the config.h file:
 
   #define ADD\_CRC\_CHECK     true    // Use this to add CRC check to incomming and outgoing messages
-
-
+  
 This uses the CRC routines from Rob Tillaart, available here: https://github.com/RobTillaart/CRC
-
 
 A 'CRC-8/SMBUS' is perfromed on the data and a 2 byte CRC code is added to all replys (and expected on all enquiries). This is added between a ? and # symbol.
 
@@ -471,8 +374,6 @@ For example: aaI0RESET?d9# has the CRC check d9 added to the reset request.
 Remember: Capitalisation will affect the results: D is not the same as d!
 
 You can use this online calculator to check your CRC: https://crccalc.com/ The type of CRC is CRC-8/SMBUS.
-
-
 
 ## Failure codes:
 
@@ -490,5 +391,4 @@ If data is not that length or does not have 'aa' and '#' at start/end then retur
 
 # Overview of Connections
 
-!\[Connections](https://github.com/curiouselectric/WindSensor/blob/main/Wind%20Sensor%20Instructions/Images/Wiring\_overview.png?raw=true)
-
+![Connections](https://github.com/curiouselectric/WindSensor/blob/main/Wind%20Sensor%20Instructions/Images/Wiring\_overview.png?raw=true)
