@@ -27,7 +27,7 @@ It was designed as a relatively simple interface to remove the need for monitori
 
 
 
-\## Wind Speed Measurements
+## Wind Speed Measurements
 
 
 
@@ -42,48 +42,30 @@ The unit stores average wind speeds for 1 second, 10 second, 1 min, 10 min and 1
 The unit converts the pulses into a real wind speed using a y=mx+c linear conversion, where y is the wind speed and c is the number of pulses. m and c are stored in EEPROM and have default values of m=1 and c=0. These are floats and can be changed as required through the serial interface. Any updated values are stored in EEPROM. If the pulses are zero then the output is also zero (no matter what the y=mc+c function is). This stops a reading of 'c' when the pulse data is zero.
 
 
-
-\## Wind Vane Measurements
-
-
+## Wind Vane Measurements
 
 The wind vane input is analog.
 
-
-
 This can read either resistive wiper vanes or stepped resistive vanes.
-
 
 
 The stepped rsistive vanes have magnet reed switches which switch in and out different resistances.
 
 The resistance then tells us the direction. A pull up reistor is required in these situations.
 
-
-
 The wind vane input can be 'trained'. So put the unit into vane training mode via the serial interface. This will run through N, NE, E, SE, S, SW, W, NW and you can hold the unit in the correct direction position and press the switch to store that data to memory. Once trained then the unit creates a buffer zone around each of the values and within the zone then the unit will record the correct direction.
-
 
 
 Wind direction is difficult to measure, as you cannot directly average the analog value (because of the 360 to 0 point where the analog value rolls around from 1024 back to 0 - this means an average of a unit pointing just off north (i.e. one reading of 0 and one reading of 360) will give an average of (360+0)/2 = 180, which is south and totally wrong!).
 
-
-
 This unit will record the number of seconds the vane has been pointing in a certain direction. This means a 'wind rose' can easily be created. This is stored and updated until it is directly reset. The unit will also return the instantaeous direction, if that is needed.
-
-
 
 Note: there is a 3V3 zener diode on the input to the Wind Vane unit. If you power the device with 3.3V then this is no problem. If you power the device with 5V then you will need to ensure the voltage at VANE does not go above 3.3V or else it will be limited.
 
 
-
-
-
 There are two mode of operation, depending upon your use case:
 
-
-
-\## Response Mode
+## Response Mode
 
 
 
@@ -95,7 +77,7 @@ In this mode then the unit responds to serial requests made. You ask the sensor 
 
 
 
-\## Broadcast Mode
+## Broadcast Mode
 
 
 
@@ -121,7 +103,7 @@ It runs on an ATMega328 running at 8MHz with selectable baud serial (up to 57600
 
 
 
-\# Hardware
+# Hardware
 
 
 
@@ -135,7 +117,7 @@ Both inputs for the wind vane and anemometer are buffered with an op-amp and als
 
 
 
-\## Anemometers Tested:
+## Anemometers Tested:
 
 
 
@@ -151,7 +133,7 @@ AliExpress Unit (low cost) PR-3000-FS-NPN| https://www.aliexpress.com/item/32798
 
 
 
-\## Wind Vanes Tested:
+## Wind Vanes Tested:
 
 
 
@@ -163,7 +145,7 @@ Maplin Vane | No Link |  Switched resistive
 
 
 
-\## Board ID Number
+## Board ID Number
 
 
 
@@ -171,7 +153,7 @@ Each unit can have a unique ID (using a solder pad for 0-7 values), so multiple 
 
 
 
-\## PCB User Switch and User LED
+## PCB User Switch and User LED
 
 
 
@@ -215,13 +197,13 @@ The mode can also be set with a serial request, using the "Set the unit to broad
 
 
 
-\# Firmware
+# Firmware
 
 This uses an ATMega328 running at 8MHz with 3.3v or 5V supply.
 
 
 
-\## Initial bootloader installation:
+## Initial bootloader installation:
 
 You should not need to do this, as the unit should come with this already installed. This is just for information.
 
@@ -253,7 +235,7 @@ You can then use the 'Burn Bootloader' option within 'Tools' in the Arduino IDE.
 
 
 
-\## Program via Arduino IDE
+## Program via Arduino IDE
 
 
 
@@ -273,7 +255,7 @@ You can then upload code by choosing the "ATMega328" option with the "External 8
 
 
 
-\# Serial Data and Commands
+# Serial Data and Commands
 
 
 
@@ -283,7 +265,7 @@ At all other times then the unit is asleep.
 
 
 
-\## Wind Speed data:
+## Wind Speed data:
 
 Request: “aaI0WSA4#”  ("aaI0WSA4?19#" with CRC)  Where 0 is an ID from 0-7 set by solder on PCB. 4 is the averaging period (0=1s, 1=10s, 2 = 60s, 3 = 600s, 4=3600s)
 
@@ -303,7 +285,7 @@ Returns: "aaI0WSMN:3.00#"  // Where 3.00 is the data + CRC if requested
 
  
 
-\## Wind Speed data maximum:
+## Wind Speed data maximum:
 
 Request: “aaI0WSMX#”  ("aaI0WSMX?e6#" with CRC) - does not matter what averaging period. min/max are just the min/max seen.
 
@@ -313,7 +295,7 @@ Returns: "aaI0WSMX:3.00#"  // Where 3.00 is the data + CRC if requested
 
 
 
-\## What is Anemometer conversion?:
+## What is Anemometer conversion?:
 
 Request: "aaI0WSCON#" ("aaI0WSCON?41#" with CRC)
 
@@ -323,7 +305,7 @@ Returns: "aaI0STWSCONm123.4c567.89#" (from stored values) + CRC if requested
 
  
 
-\## Set the Anemometer conversion:
+## Set the Anemometer conversion:
 
 Request: "aaI0WSSTm123.4c567.89#"  ("aaI0WSSTm123.4c567.89?38#" with CRC) Where 123.4 is the gradient and 567.89 is the constant (y=mx+c)
 
@@ -337,7 +319,7 @@ Request: "aaI0WSSTm1c0#" or "aaI0WSSTm1c0?da#" with CRC to set m= 1 and c=0. Thi
 
  
 
-\## Wind Vane data:
+## Wind Vane data:
 
 Request: “aaI0WV#”  ("aaI0WV?b4#" with CRC) Where 0 is an ID from 0-7 set by solder on PCB.
 
@@ -351,7 +333,7 @@ Returns:    "aaI0WV=W:0.00:0.00:0.00:0.00:0.00:0.00:62.00:0.00#" + CRC if reques
 
  
 
-\## Reset the max, min and wind vane array:
+## Reset the max, min and wind vane array:
 
 Request: "aaI0RESET#" ("aaI0RESET?d9#" with CRC)
 
@@ -361,7 +343,7 @@ Returns: "aaRESET#"
 
 
 
-\## Set the unit to broadcast:
+## Set the unit to broadcast:
 
 Request: "aaI0SEND?#" where ? is an int (0)= 1s data, (1)= 10s data, (2)= 60s/1 min data, (3)= 600s/10 min data, (4)= 3600s/1hr data, (5)= NO data
 
@@ -379,7 +361,7 @@ If the unit is in broadcast mode then the minimum and maximum wind speeds and th
 
 
 
-\## What is baud rate?:
+## What is baud rate?:
 
 Request: "aaI0BD#" ("aaI0BD?dc#" with CRC)
 
@@ -389,7 +371,7 @@ Returns: "aaBD9600#"  // Where 9600 is the baud rate + CRC if requested
 
  
 
-\## Set Baud Rate:
+## Set Baud Rate:
 
 Request: "aaI0STBD\*#"  Where \* is (0)1200, (1)2400, (2)9600, (3)57600, (4)115200
 
@@ -399,19 +381,13 @@ Returns: "aaBD9600#"   // Where 9600 is the baud rate + CRC if requested
 
 
 
-\## What is ID?:
+## What is ID?:
 
 Mentioned at start up of unit - it is solder-programmed... cannot be changed in code.
 
-
-
 ID selection is by using a blob of solder to connect together some pads labelled A0, A1 and A2. The default is for no pads to be soldered and the ID is 0. This means the unit will respond to "I0" as the ID.
 
-
-
 To change the ID to another number from 0-7 then we can solder the different connection pads to create a binay number. The connections are:
-
-
 
 A0     |A1     |A2     | ID
 
@@ -435,7 +411,7 @@ Solder |Solder |Solder | 7
 
 
 
-\## Enter vane training mode:
+## Enter vane training mode:
 
 Request: "aaI0VT#" ("aaI0VT?af#" with CRC)
 
@@ -465,7 +441,7 @@ When it ends this data is stored within the unit and the direction 'bands' are r
 
 
 
-\## Serial 'Button' press
+## Serial 'Button' press
 
 
 
@@ -473,73 +449,46 @@ The command "aaI0BUTTON" + CRC + "#" will act just like a button press. This is 
 
 
 
-\## Add CRC check:
+## Add CRC check:
 
 Within the config of the firmware a CRC (Cyclic Redundancy Check) can be added to the data (or not!).
 
 
-
 Set this true using the flag in the config.h file:
 
-
-
   #define ADD\_CRC\_CHECK     true    // Use this to add CRC check to incomming and outgoing messages
-
 
 
 This uses the CRC routines from Rob Tillaart, available here: https://github.com/RobTillaart/CRC
 
 
-
 A 'CRC-8/SMBUS' is perfromed on the data and a 2 byte CRC code is added to all replys (and expected on all enquiries). This is added between a ? and # symbol.
-
-
 
 If no CRC then the end char is a #.
 
-
-
 For example: aaI0RESET?d9# has the CRC check d9 added to the reset request.
 
-
-
 Remember: Capitalisation will affect the results: D is not the same as d!
-
-
 
 You can use this online calculator to check your CRC: https://crccalc.com/ The type of CRC is CRC-8/SMBUS.
 
 
 
-\## Failure codes:
+## Failure codes:
 
 If data is not that length or does not have 'aa' and '#' at start/end then return with send "aaFAIL\*\*#" error code. All will have CRC on these codes, if requested.
 
-
-
 "aaFAIL1#" = String too long
-
-
 
 "aaFAIL2#" = Unit ID not correct/not a number
 
-
-
 "aaFAIL3#" = Channel ID is not correct/not a number
-
-
 
 "aaFAIL4#" = Average not correct/not a number
 
-
-
 "aaFAIL5#" = Start/End chars not correct
 
-
-
-\# Overview of Connections
-
-
+# Overview of Connections
 
 !\[Connections](https://github.com/curiouselectric/WindSensor/blob/main/Wind%20Sensor%20Instructions/Images/Wiring\_overview.png?raw=true)
 
