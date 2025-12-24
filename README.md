@@ -13,43 +13,17 @@ I was also concerned with energy consumption (my project was battery based). If 
 
 ## Overview
 
-The problem with measuring wind anemometers and wind vane is that they constantly need to be checked. You need to know at all times when pulses have come in and which direction the wind vane is facing. This requires a bit of microcontroller time and processing. This unit is designed to solve that.
+The problem with measuring sensors with values that change relatively quickly is that they constantly need to be checked. This requires a bit of microcontroller time and processing. This unit is designed to solve that.
 
-Wire up your vane and anemometer. Power the unit up. Then it will save the averaged data for you. You can then get hold of the data through serial requests and process as you need.
+Wire up your RS485 sensor. Power the unit up. Then it will save the averaged data for you. You can then get hold of the data through serial requests and process as you need.
 
-![Image](https://github.com/curiouselectric/RS485InterfaceBoard/blob/779b627fa3202d53ca6c4beaae3cd90f97ab3141/RS485%20Interface%20Board%20Instructions/Images/RS485%20Interface%20overview.png?raw=true)
+![Overview](https://github.com/curiouselectric/RS485InterfaceBoard/blob/779b627fa3202d53ca6c4beaae3cd90f97ab3141/RS485%20Interface%20Board%20Instructions/Images/RS485%20Interface%20overview.png?raw=true)
 
-![Overview] (https://github.com/curiouselectric/RS485InterfaceBoard/blob/main/RS485%20Interface%20Board%20Instructions/Images/RS485%20Interface%20overview.png?raw=true)
+I wrote this to interface to an ESP32 data logger, which sleeps most of the time. It wakes up, talks to the RS485 sensor, gets the data it needs, then goes back to sleep, knowing the RS485 Interface Board is always monitoring.
 
-I wrote this to interface to an ESP32 data logger, which sleeps most of the time. It wakes up, talks to the wind sensor, gets the data it needs, then goes back to sleep, knowing the wind sensor is always monitoring.
+It was designed as a relatively simple interface to remove the need for monitoring pulses/dealing with RS485 requests/getting sensor data and averaging the sensor data.
 
-It was designed as a relatively simple interface to remove the need for monitoring pulses and averaging them.
-
-## Wind Speed Measurements
-
-The anemometer can either be a pulse output, NPN output or hall-effect output. The unit reads digital pulses, with circuitry on the unit converting the hall effect output to pulses. (Note: This unit cannot read 0-5V or analog output sensors).
-
-The unit stores average wind speeds for 1 second, 10 second, 1 min, 10 min and 1 hour values. It also records the maximum and minimum wind speed.
-
-The unit converts the pulses into a real wind speed using a y=mx+c linear conversion, where y is the wind speed and c is the number of pulses. m and c are stored in EEPROM and have default values of m=1 and c=0. These are floats and can be changed as required through the serial interface. Any updated values are stored in EEPROM. If the pulses are zero then the output is also zero (no matter what the y=mc+c function is). This stops a reading of 'c' when the pulse data is zero.
-
-## Wind Vane Measurements
-
-The wind vane input is analog.
-
-This can read either resistive wiper vanes or stepped resistive vanes.
-
-The stepped rsistive vanes have magnet reed switches which switch in and out different resistances.
-
-The resistance then tells us the direction. A pull up reistor is required in these situations.
-
-The wind vane input can be 'trained'. So put the unit into vane training mode via the serial interface. This will run through N, NE, E, SE, S, SW, W, NW and you can hold the unit in the correct direction position and press the switch to store that data to memory. Once trained then the unit creates a buffer zone around each of the values and within the zone then the unit will record the correct direction.
-
-Wind direction is difficult to measure, as you cannot directly average the analog value (because of the 360 to 0 point where the analog value rolls around from 1024 back to 0 - this means an average of a unit pointing just off north (i.e. one reading of 0 and one reading of 360) will give an average of (360+0)/2 = 180, which is south and totally wrong!).
-
-This unit will record the number of seconds the vane has been pointing in a certain direction. This means a 'wind rose' can easily be created. This is stored and updated until it is directly reset. The unit will also return the instantaeous direction, if that is needed.
-
-Note: there is a 3V3 zener diode on the input to the Wind Vane unit. If you power the device with 3.3V then this is no problem. If you power the device with 5V then you will need to ensure the voltage at VANE does not go above 3.3V or else it will be limited.
+The brilliant [ESPHome project](https://esphome.io/components/#environmental) has loads of sensor types you can interafce easily with a low cost ESP microcontrollers. For systems that have WiFi and good power connections then that project is a good resource to use. This project is designed for very low power systems (battery based datalogging) and for situations where easy access to Wi-Fi is not available.
 
 There are two mode of operation, depending upon your use case:
 
@@ -57,13 +31,13 @@ There are two mode of operation, depending upon your use case:
 
 In this mode then the unit responds to serial requests made. You ask the sensor for data and this is returned. It never sends anything unless asked.
 
-![Response](https://github.com/curiouselectric/WindSensor/blob/main/Wind%20Sensor%20Instructions/Images/wind%20sensor%20response.png?raw=true)
+![Response](https://github.com/curiouselectric/RS485InterfaceBoard/blob/048843a24f9ec3a42a6946c3067e17d5d328104e/RS485%20Interface%20Board%20Instructions/Images/RS485%20Interface%20response.png?raw=true)
 
 ## Broadcast Mode
 
 In this mode then the unit regularly sends data via the serial connunication. It will send the averaged data for (0) 1 second, (1) 10 second, (2) 1 min, (3) 10 min and (4) 1 hour averaged data. If this is set to (5) then the unit does not send any data. The send mdoe is stored in EEPROM, so it will start sending data again even if power is lost.
 
-![Broadcast](https://github.com/curiouselectric/WindSensor/blob/main/Wind%20Sensor%20Instructions/Images/wind%20sensor%20broadcast.png?raw=true)
+![Broadcast](https://github.com/curiouselectric/RS485InterfaceBoard/blob/048843a24f9ec3a42a6946c3067e17d5d328104e/RS485%20Interface%20Board%20Instructions/Images/RS485%20Interface%20%20broadcast.png?raw=true)
 
 Boradcast mode works well if the logger is always listening and you only have one sensor in range. If more than one sensor is in range then the data will clash and potentially cause issues, in which case use Response mode.
 
@@ -71,31 +45,35 @@ The two modes work together - you can have the unit sending regular data and als
 
 It runs on an ATMega328 running at 8MHz with selectable baud serial (up to 57600). It comes pre-programmed, but code can be uploaded via the Arduino IDE, using the MiniCore board add-on. See firmware for more details.
 
+
+## RS485 Sensor Types
+
+There are a huge range of RS485 sensors for many different variables. I am looking to cover as many RS485 sensors as I can
+
+The firmware i
+
+## Sensors Implemented:
+
+Sensor Name      | Link   | Type   | Notes  
+---------------------|----------|---------|----------|
+Vector Insrutments NRG #40C |  |  | ||
+
+
+
+
+
+
 # Hardware
 
 The PCB was designed in KiCAD and is available here. A small PCB has been designed.
 
 There is one reset switch, one user input switch and one LED output.
 
-Both inputs for the wind vane and anemometer are buffered with an op-amp and also have 5.1V zener protection. The anemometer input compares the input with a low voltage level to create a pulse from a hall-effect (which output a sine-wave like signal). This also works as a pull-down pulse sensor, which works with NPN and switch output anemometers.
-
-## Anemometers Tested:
-
-Anemometer Name      | Link   | Type   | m Value   | c Value
----------------------|----------|---------|----------|----------
-Vector Insrutments NRG #40C | https://www.nrgsystems.com/products/met-sensors/detail/40c-anemometer | Hall-effect  | 0.765 for m/s | 0.35 for m/s
-Maplin Anemometer (low cost) | https://www.ebay.co.uk/itm/274338314354 | Reed-switch pulse | 0.7 for m/s | 0 for m/s
-AliExpress Unit (low cost) PR-3000-FS-NPN| https://www.aliexpress.com/item/32798148991.html | NPN Pulse | |
-
-## Wind Vanes Tested:
-
-Wind Vane Name      |   Link   |  Type
----------------------|----------|-----------
-Maplin Vane | No Link |  Switched resistive
 
 ## Board ID Number
 
-Each unit can have a unique ID (using a solder pad for 0-7 values), so multiple units can be added to a serial bus, if needed. The defalt is 0.
+Each unit can have a unique ID (using a push link 6 pin pad for 0-7 values), so multiple units can be added to a serial bus, if needed. The defalt is 0 (no links used).
+
 
 ## PCB User Switch and User LED
 
@@ -113,15 +91,17 @@ The unit will flash after a button press to indicate the broadcast mode (so 0 fl
 
 If this is set to 5 then the unit works in 'Response' mode.
 
-If this is set to 0-4 then the unit is in broadcast mode and will send the data at the relevant interval (0 = 1s, 1 = 10s, 2 = 1 min, 3 = 10 min and 4 = 1 hour).
+If this is set to 0-4 then the unit is in 'Broadcast' mode and will send the data at the relevant interval (0 = 1s, 1 = 10s, 2 = 1 min, 3 = 10 min and 4 = 1 hour).
 
 The mode can also be set with a serial request, using the "Set the unit to broadcast:" method (see below).
 
 # Firmware
 
-This uses an ATMega328 running at 8MHz with 3.3v or 5V supply.
+This uses an ATMega328 running at 16MHz with 3.3v or 5V supply.
 
 ## Initial bootloader installation:
+
+
 
 You should not need to do this, as the unit should come with this already installed. This is just for information.
 
