@@ -17,7 +17,7 @@ The problem with measuring wind anemometers and wind vane is that they constantl
 
 Wire up your vane and anemometer. Power the unit up. Then it will save the averaged data for you. You can then get hold of the data through serial requests and process as you need.
 
-RS485 Interface Board Instructions/Images/RS485 Interface overview.png?raw=true
+![Image] (RS485 Interface Board Instructions/Images/RS485 Interface overview.png?raw=true)
 
 ![Overview] (https://github.com/curiouselectric/RS485InterfaceBoard/blob/main/RS485%20Interface%20Board%20Instructions/Images/RS485%20Interface%20overview.png?raw=true)
 
