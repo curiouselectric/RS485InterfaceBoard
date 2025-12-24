@@ -1,9 +1,17 @@
 
 # RS485InterfaceBoard
 
-A unit to interface various RS485 sensors with a simple serial interface via an Arduino based circuit.
+A unit to interface various RS485 sensors with a simple serial interface via an ATMega328-based circuit. The unit also provides averaged data, controlled stepped-up supply voltage and a field-adjustable ID.
 
-This connects to various anemometers and wind vanes and provides a serial interface for averaged data from the pulses.
+"Why do you need that?", you ask.... 
+
+I had been wanting to use an industrial soil mositure sensor for a simple project. This device was only available as an RS3485 device. So I ordered that - it then took days of head scratching to sort basic communication with the device. This unit is meant to simplify reading of avaeraged data from RS485 sensors and make it easy to get that data into your project via a simple serial request/reply set of commands.
+
+The other issue with a lot of the RS485 sensor is that they need higher voltages supplied (such as 12V or even 24V DC). So on this interface board I added a DC-DC step up converter to power the sensor. 
+
+I was also concerned with energy consumption (my project was battery based). If I was to leave the DC-DC converter running all the time then my battery would run down very quickly. So I added control of the power to the sensor, so that I can power up, take the readings then power down. This saves a huge ammount of energy (well, proportional to my battery size).
+
+## Overview
 
 The problem with measuring wind anemometers and wind vane is that they constantly need to be checked. You need to know at all times when pulses have come in and which direction the wind vane is facing. This requires a bit of microcontroller time and processing. This unit is designed to solve that.
 
