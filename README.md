@@ -209,25 +209,25 @@ ID selection is by using a blob of solder to connect together some pads labelled
 
 To change the ID to another number from 0-7 then we can solder the different connection pads to create a binay number. The connections are:
 
-A0     |A1     |A2     | ID
+1    |2    |4     | ID
 
 -------|-------|-------|----
 
 NC     |NC     |NC     | 0
 
-Solder |NC     |NC     | 1
+CONN |NC     |NC     | 1
 
-NC     |Solder |NC     | 2
+NC     |CONN |NC     | 2
 
-Solder |Solder |NC     | 3
+CONN |CONN |NC     | 3
 
-NC     |NC     |Solder | 4
+NC     |NC     |CONN | 4
 
-Solder |NC     |Solder | 5
+CONN |NC     |CONN | 5
 
-NC     |Solder |Solder | 6
+NC     |CONN |CONN | 6
 
-Solder |Solder |Solder | 7
+CONN |CONN |CONN | 7
 
 ## Enter vane training mode:
 
@@ -285,4 +285,3 @@ If data is not that length or does not have 'aa' and '#' at start/end then retur
 
 # Overview of Connections
 
-![Connections](https://github.com/curiouselectric/WindSensor/blob/main/Wind%20Sensor%20Instructions/Images/Wiring\_overview.png?raw=true)
