@@ -17,7 +17,7 @@ The problem with measuring wind anemometers and wind vane is that they constantl
 
 Wire up your vane and anemometer. Power the unit up. Then it will save the averaged data for you. You can then get hold of the data through serial requests and process as you need.
 
-![Overview](https://github.com/curiouselectric/WindSensor/blob/main/Wind%20Sensor%20Instructions/Images/wind%20sensor%20overview.png?raw=true)
+![Overview] (https://github.com/curiouselectric/RS485InterfaceBoard/blob/main/RS485%20Interface%20Board%20Instructions/Images/RS485%20Interface%20overview.png?raw=true)
 
 I wrote this to interface to an ESP32 data logger, which sleeps most of the time. It wakes up, talks to the wind sensor, gets the data it needs, then goes back to sleep, knowing the wind sensor is always monitoring.
 
