@@ -1,6 +1,6 @@
-# Sensor Interface Board
+# RS485 Sensor Interface Board
 
-A unit to interface various sensors (digital/analog/RS485) with a simple serial interface via an ATMega328-based circuit. The unit also provides averaged data, controlled stepped-up supply voltage and a field-adjustable ID.
+A unit to interface various RS485 sensors with a simple serial interface via an ATMega328-based circuit. The unit also provides averaged data, controlled stepped-up supply voltage and a field-adjustable ID.
 
 "Why do you need that?", you ask.... 
 
@@ -24,45 +24,15 @@ It was designed as a relatively simple interface to remove the need for monitori
 
 The brilliant [ESPHome project](https://esphome.io/components/#environmental) has loads of sensor types you can interafce easily with a low cost ESP microcontrollers. For systems that have WiFi and good power connections then that project is a good resource to use. This project is designed for very low power systems (battery based datalogging) and for situations where easy access to Wi-Fi is not available.
 
-There are two mode of operation, depending upon your use case:
+# RS485 Sensor Interface Firmware
 
-## Response Mode
+The firmware for this project has been moved to: 
 
-In this mode then the unit responds to serial requests made. You ask the sensor for data and this is returned. It never sends anything unless asked.
+[https://github.com/curiouselectric/SensorInterfaceBoard/tree/main/Sensor%20Interface%20Board%20Firmware](https://github.com/curiouselectric/SensorInterfaceBoard/tree/main/Sensor%20Interface%20Board%20Firmware)
 
-![Response](https://github.com/curiouselectric/SensorInterfaceBoard/blob/1cc6fdd7eef303f40e9d5f870216e7cde911cf6a/RS485%20Interface%20Board%20Instructions/Images/Sensor%20Interface%20response.png)
+This is within the Sensor Interface Board repository: [https://github.com/curiouselectric/SensorInterfaceBoard](https://github.com/curiouselectric/SensorInterfaceBoard)
 
-## Broadcast Mode
-
-In this mode then the unit regularly sends data via the serial connunication. It will send the averaged data for (0) 1 second, (1) 10 second, (2) 1 min, (3) 10 min and (4) 1 hour averaged data. If this is set to (5) then the unit does not send any data. The send mode is stored in EEPROM, so it will start sending data again even if power is lost.
-
-![Broadcast](https://github.com/curiouselectric/SensorInterfaceBoard/blob/1cc6fdd7eef303f40e9d5f870216e7cde911cf6a/RS485%20Interface%20Board%20Instructions/Images/Sensor%20Interface%20%20broadcast.png)
-
-Boradcast mode works well if the logger is always listening and you only have one sensor in range. If more than one sensor is in range then the data will clash and potentially cause issues, in which case use Response mode.
-
-The two modes work together - you can have the unit sending regular data and also responding to requests.
-
-It runs on an ATMega328 running at 16MHz with selectable baud serial (up to 57600). It comes pre-programmed, but new code can be uploaded via the Arduino IDE, with the Uno bootloader. See firmware for more details.
-
-
-## Sensor Types
-
-There are a huge range of RS485 sensors for many different variables. I'd like this unit to be adaptable to work with a variety of sensors with minila code changes.
-
-This code base also works with other, non-RS485 sensors, such as wind speed sensors, wind vanes and solar irradiance sensors.
-
-## Sensors Implemented:
-This is a list of the sensor types which have been implemented with this software, Along with the version number they were added.
-
-Sensor Name                        |  Ref    |  Version | Device Type  |   ID                   | Link                                                 | Notes  |
------------------------------------|---------|----------|--------------|------------------------|------------------------------------------------------|--------|
-Soil Temperature & Humidity        |ZTS-3000 |1.0       | SM           |ZTS-3000-TR-WS-N01     |[https://www.curiouselectric.co.uk/products/soil-moisture-sensor](https://www.curiouselectric.co.uk/products/soil-moisture-sensor) |     |
-Wind Sensor (speed & direction)    |         |1.3       | WT           |                         |[https://www.curiouselectric.co.uk/collections/monitoring/products/wind-sensor-interface](https://www.curiouselectric.co.uk/collections/monitoring/products/wind-sensor-interface)  | Works with Anemometer and Wind Vane | 
-RS485 Pyranometer Irradiance Sensor| PYR20    |1.4         | PY           |PYR20              |[https://www.aliexpress.com/item/1005002999915991.html](https://www.aliexpress.com/item/1005002999915991.html) |              |
-DIY Irradiance Sensor              |         |          | IR           |                |     |     |
-PAR Sensor                         |         |          | PR           |                |     |     |
-Air Temperature/Humidity/Pressure  |         |1.3       | not needed    |AHT20 / BMP280 | [https://www.aliexpress.com/item/1005004460907148.html](https://www.aliexpress.com/item/1005004460907148.html) | This adds onto the PCB along with a sensor above|
-
+I have done this to keep all the sensor boards up to date with just one set of firmware for all the sensor boards.
 
 # Hardware
 
@@ -100,44 +70,6 @@ If this is set to 0-4 then the unit is in 'Broadcast' mode and will send the dat
 
 The mode can also be set with a serial request, using the "Set the unit to broadcast:" method (see below).
 
-# Firmware
-
-This uses an ATMega328 with the MiniCore Bootloader. This uses an oscillator running at 16MHz for 5V supply or 8MHz for 3.3V supply. Check the correct oscillator is chosen when uploading.
-
-## Initial bootloader installation:
-
-You should not need to do this, as the unit should come with this already installed. This is just for information.
-
-To upload a bootloader it then MiniCore is used:
-
-Install MiniCore from here: https://github.com/MCUdude/MiniCore
-
-Install the bootloader using an Arduino as an ISP. https://www.arduino.cc/en/Tutorial/BuiltInExamples/ArduinoISP
-
-Wire up your arduino and an ISP 3x2 header pin onto the wind sensor PCB.
-
-Choose the "ATMega328" option with the "External 8MHz Oscillator" set for the 3.3V version or "External 16MHz Oscillator" set for the 5V version, depending upon the crystal supplied.
-
-The ATmega328 datasheet says that an 8MHz crystal should be used at 3.3V for reliable serial comms. YMMV. 
-
-You can then use the 'Burn Bootloader' option within 'Tools' in the Arduino IDE. This will install the Minicore bootloader.
-
-
-## Program via Arduino IDE
-
-You can only do this when the bootloader is programmed (this will be programmed for versions supplied by me).
-
-To program it then MiniCore is used:
-
-Install MiniCore from here: https://github.com/MCUdude/MiniCore
-
-Add to preferences and then board manager.
-
-Choose the "ATMega328" option with the "External 8MHz Oscillator" set for the 3.3V version or "External 16MHz Oscillator" set for the 5V version, depending upon the crystal supplied.
-
-The ATmega328 datasheet says that an 8MHz crystal should be used at 3.3V for reliable serial comms. YMMV. 
-
-You can then upload code using the 6pin serial/FTDI interface on the board.
 
 # Serial Data and Commands
 
@@ -286,7 +218,7 @@ You can use this online calculator to check your CRC: https://crccalc.com/ The t
 
 If data is not that length or does not have 'aa' and '#' at start/end then return with send "aaFAIL\*\*#" error code. All will have CRC on these codes, if requested.
 
-+ "aaFAILCRC?^^#": CRC check fail
++  "aaFAILCRC?^^#": CRC check fail
 +  "aaFAILTL?^^#": String too long
 +  "aaFAILID?^^#": Problem with ID
 +  "aaFAILIDX?^^#": ID not correct to device
@@ -295,86 +227,22 @@ If data is not that length or does not have 'aa' and '#' at start/end then retur
 +  "aaFAILCN?^^#": Channel number requested is greater than channels existing
 +  "aaFAILCMD?^^#": Command not recognised 
 
-
 # Sensor Specific Commands
 For each sensor type there are additional commands. These are only available if the unit is in the correct mode.
 They are listed here.
 
-## 'SM' RS485 Soil Mositure Sensor
+## 'SM' RS485 Soil Moisture Sensor
 
 There are no extra commands.
+Soil Moisture (% (m3 water in m3 soil)) and Soil Temperature (C) are monitored.
 
-## 'PY' RS485 Pyrnanometer Irradiance Sensor
+## 'PY' RS485 Pyranometer Irradiance Sensor
 
 There are no extra commands.
+Irradiance (in W/m2) is monitored.
 
+## 'DC' RS485 DC Power Sensor
 
-## 'WS' Wind Speed Sensor (Vane and Anemometer)
-
-### Wind Speed data:
-
-Request: “aaI0WSA4#”  ("aaI0WSA4?19#" with CRC)  Where 0 is an ID from 0-7 set by solder on PCB. 4 is the averaging period (0=1s, 1=10s, 2 = 60s, 3 = 600s, 4=3600s)
-
-Returns: "aaI0WSA4:3.00:5.67:1.23#"  // Where 4 is the averaging period, 3.00 is the data within the averaging period, 5.67 is the maximum and 1.23 is the minimum.
-
-### Wind Speed data minimum:
-
-Request: “aaI0RMN#” ("aaI0RMN?^^#" with CRC) - does not matter what averaging period. min/max are just the min/max seen.
-
-Returns: "aaI0RMN:3.00#"  // Where 3.00 is the data + CRC if requested
-
-### Wind Speed data maximum:
-
-Request: “aaI0RMX#”  ("aaI0RMX?^^#" with CRC) - does not matter what averaging period. min/max are just the min/max seen.
-
-Returns: "aaI0RMX:3.00#"  // Where 3.00 is the data + CRC if requested
-
-### What is Anemometer conversion?:
-
-Request: "aaI0WSCON#" ("aaI0WSCON?41#" with CRC)
-
-Returns: "aaI0STWSCONm123.4c567.89#" (from stored values) + CRC if requested
-
-### Set the Anemometer conversion:
-
-Request: "aaI0WSSTm123.4c567.89#"  ("aaI0WSSTm123.4c567.89?38#" with CRC) Where 123.4 is the gradient and 567.89 is the constant (y=mx+c)
-
-Returns: "aaI0STWSSETm123.4c567.89#" (set to the new values) + CRC if requested
-
-Request: "aaI0WSSTm1c0#" or "aaI0WSSTm1c0?da#" with CRC to set m= 1 and c=0. This is useful for initial testing.
-
-### Wind Vane data:
-
-Request: “aaI0WV#”  ("aaI0WV?b4#" with CRC) Where 0 is an ID from 0-7 set by solder on PCB.
-
-Returns:    The instantaneuous direction AND the direction array data
-
-Returns:    "aaI0WV=W:0.00:0.00:0.00:0.00:0.00:0.00:62.00:0.00#" + CRC if requested
-
-### Reset the max, min and wind vane array:
-
-Request: "aaI0RESET#" ("aaI0RESET?d9#" with CRC)
-
-Returns: "aaRESET#"
-
-### Enter vane training mode:
-
-Request: "aaI0VT?#" ("aaI0VT?af#" with CRC) OR long press of the button (>1 second) will enter this mode.
-
-Returns: Enter the vane training routine - use button to go through the different directions and set the values.
-
-The serial port will show which direction the vane should be pointing at.
-
-Move the vane to this position and press the user switch (for around 0.5 seconds).
-
-The serial port will show then next direction and will got N, NE, E, SE, S, SW, W, NW and then end.
-
-The unit will also send "aaI0WVOK=NW" + CRC +"#" to report back which direction the unit is now being trained.
-
-When it ends this data is stored within the unit and the direction 'bands' are recaluclated.
-
-
-# Overview of Connections
-
-To Do - Update with new PCB version wiring diagram
+There are no extra commands.
+Voltage (V), Current (A), Power (W) and cumulative Energy (Wh) are monitored.
 
