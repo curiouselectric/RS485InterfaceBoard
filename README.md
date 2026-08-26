@@ -228,7 +228,7 @@ If data is not that length or does not have 'aa' and '#' at start/end then retur
 +  "aaFAILCMD?^^#": Command not recognised 
 
 # Sensor Specific Commands
-For each sensor type there are additional commands. These are only available if the unit is in the correct mode.
+For each sensor type there are additional commands. These are only available if the correct firmware has been installed.
 They are listed here.
 
 ## 'SM' RS485 Soil Moisture Sensor
