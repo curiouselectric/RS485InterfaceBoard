@@ -2505,7 +2505,7 @@
 	)
 	(text "SENSOR Board ID\n"
 		(exclude_from_sim no)
-		(at 43.18 93.98 0)
+		(at 72.39 91.44 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2526,7 +2526,7 @@
 		(uuid "e076d1bb-b04f-4b8b-befd-d1e210cfd9b1")
 	)
 	(junction
-		(at 66.04 102.87)
+		(at 95.25 100.33)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "174c43d3-8d3b-4cd2-b8dc-1f3929e04e87")
@@ -2592,7 +2592,7 @@
 		(uuid "b7e5c11e-29a1-414a-8edb-6bea37a1b672")
 	)
 	(junction
-		(at 66.04 105.41)
+		(at 95.25 102.87)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b8ba5e77-b25d-4f4a-8223-e2cd0d063d75")
@@ -2661,7 +2661,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 102.87) (xy 39.37 102.87)
+			(xy 72.39 100.33) (xy 68.58 100.33)
 		)
 		(stroke
 			(width 0)
@@ -2741,7 +2741,7 @@
 	)
 	(wire
 		(pts
-			(xy 55.88 46.99) (xy 60.96 46.99)
+			(xy 85.09 44.45) (xy 90.17 44.45)
 		)
 		(stroke
 			(width 0)
@@ -2781,7 +2781,7 @@
 	)
 	(wire
 		(pts
-			(xy 39.37 67.31) (xy 39.37 73.66)
+			(xy 68.58 64.77) (xy 68.58 71.12)
 		)
 		(stroke
 			(width 0)
@@ -2811,7 +2811,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 105.41) (xy 39.37 105.41)
+			(xy 72.39 102.87) (xy 68.58 102.87)
 		)
 		(stroke
 			(width 0)
@@ -3141,7 +3141,7 @@
 	)
 	(wire
 		(pts
-			(xy 39.37 48.26) (xy 39.37 45.72)
+			(xy 68.58 45.72) (xy 68.58 43.18)
 		)
 		(stroke
 			(width 0)
@@ -3191,7 +3191,7 @@
 	)
 	(wire
 		(pts
-			(xy 66.04 100.33) (xy 63.5 100.33)
+			(xy 95.25 97.79) (xy 92.71 97.79)
 		)
 		(stroke
 			(width 0)
@@ -3221,7 +3221,7 @@
 	)
 	(wire
 		(pts
-			(xy 66.04 105.41) (xy 66.04 109.22)
+			(xy 95.25 102.87) (xy 95.25 106.68)
 		)
 		(stroke
 			(width 0)
@@ -3261,7 +3261,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 100.33) (xy 39.37 100.33)
+			(xy 72.39 97.79) (xy 68.58 97.79)
 		)
 		(stroke
 			(width 0)
@@ -3391,7 +3391,7 @@
 	)
 	(wire
 		(pts
-			(xy 66.04 105.41) (xy 66.04 102.87)
+			(xy 95.25 102.87) (xy 95.25 100.33)
 		)
 		(stroke
 			(width 0)
@@ -3401,7 +3401,7 @@
 	)
 	(wire
 		(pts
-			(xy 39.37 55.88) (xy 39.37 59.69)
+			(xy 68.58 53.34) (xy 68.58 57.15)
 		)
 		(stroke
 			(width 0)
@@ -3421,7 +3421,7 @@
 	)
 	(wire
 		(pts
-			(xy 60.96 67.31) (xy 60.96 62.23)
+			(xy 90.17 64.77) (xy 90.17 59.69)
 		)
 		(stroke
 			(width 0)
@@ -3481,7 +3481,7 @@
 	)
 	(wire
 		(pts
-			(xy 63.5 105.41) (xy 66.04 105.41)
+			(xy 92.71 102.87) (xy 95.25 102.87)
 		)
 		(stroke
 			(width 0)
@@ -3551,7 +3551,7 @@
 	)
 	(wire
 		(pts
-			(xy 63.5 102.87) (xy 66.04 102.87)
+			(xy 92.71 100.33) (xy 95.25 100.33)
 		)
 		(stroke
 			(width 0)
@@ -3631,7 +3631,7 @@
 	)
 	(wire
 		(pts
-			(xy 66.04 102.87) (xy 66.04 100.33)
+			(xy 95.25 100.33) (xy 95.25 97.79)
 		)
 		(stroke
 			(width 0)
@@ -3720,7 +3720,7 @@
 		(uuid "3be8414f-9773-473a-918b-78bcffe2c527")
 	)
 	(label "A0"
-		(at 39.37 105.41 180)
+		(at 68.58 102.87 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3750,7 +3750,7 @@
 		(uuid "48ba72ba-de53-4a57-9a63-3c27dd29b4fb")
 	)
 	(label "D8"
-		(at 55.88 46.99 0)
+		(at 85.09 44.45 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3790,7 +3790,7 @@
 		(uuid "5c993ac2-38a6-470d-bded-949dbd488ded")
 	)
 	(label "D7"
-		(at 39.37 45.72 0)
+		(at 68.58 43.18 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3820,7 +3820,7 @@
 		(uuid "6df59797-258e-47ef-aacb-3483369e0ec8")
 	)
 	(label "A1"
-		(at 39.37 102.87 180)
+		(at 68.58 100.33 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3950,7 +3950,7 @@
 		(uuid "be60af0d-c140-48e0-938f-f95bbf1678a8")
 	)
 	(label "A2"
-		(at 39.37 100.33 180)
+		(at 68.58 97.79 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4240,7 +4240,7 @@
 	)
 	(hierarchical_label "GND"
 		(shape input)
-		(at 60.96 67.31 270)
+		(at 90.17 64.77 270)
 		(effects
 			(font
 				(size 1.524 1.524)
@@ -4273,7 +4273,7 @@
 	)
 	(hierarchical_label "GND"
 		(shape input)
-		(at 66.04 109.22 270)
+		(at 95.25 106.68 270)
 		(effects
 			(font
 				(size 1.524 1.524)
@@ -4295,7 +4295,7 @@
 	)
 	(hierarchical_label "GND"
 		(shape input)
-		(at 39.37 73.66 270)
+		(at 68.58 71.12 270)
 		(effects
 			(font
 				(size 1.524 1.524)
@@ -5315,7 +5315,7 @@
 	)
 	(symbol
 		(lib_id "matts_components:ISP_3X2")
-		(at 53.34 104.14 0)
+		(at 82.55 101.6 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5325,7 +5325,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000060ffee6d")
 		(property "Reference" "P7"
-			(at 53.34 95.25 0)
+			(at 82.55 92.71 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5335,7 +5335,7 @@
 			)
 		)
 		(property "Value" "BOARD ID"
-			(at 53.34 97.3836 0)
+			(at 82.55 94.8436 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5345,7 +5345,7 @@
 			)
 		)
 		(property "Footprint" "REInnovationFootprint:ID_SELECT_3x2"
-			(at 53.34 104.14 0)
+			(at 82.55 101.6 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5356,7 +5356,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 53.34 104.14 0)
+			(at 82.55 101.6 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5366,7 +5366,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 53.34 104.14 0)
+			(at 82.55 101.6 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5377,7 +5377,7 @@
 			)
 		)
 		(property "Supplier 1" "Toby Electronics"
-			(at 53.34 104.14 0)
+			(at 82.55 101.6 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5388,7 +5388,7 @@
 			)
 		)
 		(property "Supplier 1 Code" "THD-03-R"
-			(at 53.34 104.14 0)
+			(at 82.55 101.6 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5399,7 +5399,7 @@
 			)
 		)
 		(property "Supplier 1 Web" "https://www.toby.co.uk/board-to-board-pcb-connectors/254mm-headers/thd-valcon-2.54mm-pitch-dual-row-pin-header/"
-			(at 53.34 104.14 0)
+			(at 82.55 101.6 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5410,7 +5410,7 @@
 			)
 		)
 		(property "Manufacturer" "Valcon"
-			(at 53.34 104.14 0)
+			(at 82.55 101.6 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5421,7 +5421,7 @@
 			)
 		)
 		(property "Supplier 1 Cost" "0.05"
-			(at 53.34 104.14 0)
+			(at 82.55 101.6 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5461,7 +5461,7 @@
 	(symbol
 		(lib_name "SW_PUSH_1")
 		(lib_id "matts_components:SW_PUSH")
-		(at 60.96 54.61 270)
+		(at 90.17 52.07 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5471,7 +5471,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000060ffee95")
 		(property "Reference" "SW1"
-			(at 63.9318 53.4416 90)
+			(at 93.1418 50.9016 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5482,7 +5482,7 @@
 			)
 		)
 		(property "Value" "SWA"
-			(at 63.9318 55.753 90)
+			(at 93.1418 53.213 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5493,7 +5493,7 @@
 			)
 		)
 		(property "Footprint" "REInnovationFootprint:TH_FRONT_SW"
-			(at 60.96 54.61 0)
+			(at 90.17 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5504,7 +5504,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 60.96 54.61 0)
+			(at 90.17 52.07 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5514,7 +5514,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 60.96 54.61 0)
+			(at 90.17 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5525,7 +5525,7 @@
 			)
 		)
 		(property "Supplier 1 Web" "https://uk.farnell.com/alcoswitch-te-connectivity/147873-1/tactile-switch-spst-0-05a-24v/dp/2610942"
-			(at 60.96 54.61 0)
+			(at 90.17 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5536,7 +5536,7 @@
 			)
 		)
 		(property "Supplier 1" "Farnell"
-			(at 60.96 54.61 0)
+			(at 90.17 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5547,7 +5547,7 @@
 			)
 		)
 		(property "Supplier 1 Code" "2610942"
-			(at 60.96 54.61 0)
+			(at 90.17 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5558,7 +5558,7 @@
 			)
 		)
 		(property "Manufacturer Part" "147873-1"
-			(at 60.96 54.61 0)
+			(at 90.17 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5569,7 +5569,7 @@
 			)
 		)
 		(property "Supplier 1 Cost" "0.236"
-			(at 60.96 54.61 0)
+			(at 90.17 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5580,7 +5580,7 @@
 			)
 		)
 		(property "LCSC" "C412368"
-			(at 60.96 54.61 0)
+			(at 90.17 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5591,7 +5591,7 @@
 			)
 		)
 		(property "JLCPCB Add" "Y"
-			(at 60.96 54.61 0)
+			(at 90.17 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5602,7 +5602,7 @@
 			)
 		)
 		(property "JLCPCB Cost" "0.0194"
-			(at 60.96 54.61 0)
+			(at 90.17 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5798,7 +5798,7 @@
 	)
 	(symbol
 		(lib_id "Device:LED")
-		(at 39.37 63.5 90)
+		(at 68.58 60.96 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5808,7 +5808,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000060ffeec0")
 		(property "Reference" "D1"
-			(at 39.37 60.96 90)
+			(at 68.58 58.42 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5819,7 +5819,7 @@
 			)
 		)
 		(property "Value" "LED"
-			(at 39.37 69.85 90)
+			(at 68.58 67.31 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5830,7 +5830,7 @@
 			)
 		)
 		(property "Footprint" "REInnovationFootprint:TH_LED-5MM_AK"
-			(at 39.37 63.5 0)
+			(at 68.58 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5841,7 +5841,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 39.37 63.5 0)
+			(at 68.58 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5852,7 +5852,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 39.37 63.5 0)
+			(at 68.58 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5863,7 +5863,7 @@
 			)
 		)
 		(property "Supplier 1" "Farnell"
-			(at 39.37 63.5 0)
+			(at 68.58 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5874,7 +5874,7 @@
 			)
 		)
 		(property "Supplier 1 Code" "3015159"
-			(at 39.37 63.5 0)
+			(at 68.58 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5885,7 +5885,7 @@
 			)
 		)
 		(property "Supplier 1 Web" "https://uk.farnell.com/multicomp-pro/mc011368/led-orange-red-150mcd-620nm-0805/dp/3015159"
-			(at 39.37 63.5 0)
+			(at 68.58 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5896,7 +5896,7 @@
 			)
 		)
 		(property "Manufacturer Part" "MC011368"
-			(at 39.37 63.5 0)
+			(at 68.58 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5907,7 +5907,7 @@
 			)
 		)
 		(property "Supplier 1 Cost" "0.0834"
-			(at 39.37 63.5 0)
+			(at 68.58 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5918,7 +5918,7 @@
 			)
 		)
 		(property "LCSC" "C2296"
-			(at 39.37 63.5 0)
+			(at 68.58 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5929,7 +5929,7 @@
 			)
 		)
 		(property "JLCPCB Add" "Y"
-			(at 39.37 63.5 0)
+			(at 68.58 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5940,7 +5940,7 @@
 			)
 		)
 		(property "JLCPCB Cost" "0.0102"
-			(at 39.37 63.5 0)
+			(at 68.58 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5967,7 +5967,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 39.37 52.07 0)
+		(at 68.58 49.53 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5977,7 +5977,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000060ffeece")
 		(property "Reference" "R4"
-			(at 41.148 50.9016 0)
+			(at 70.358 48.3616 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5988,7 +5988,7 @@
 			)
 		)
 		(property "Value" "470"
-			(at 41.148 53.213 0)
+			(at 70.358 50.673 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5999,7 +5999,7 @@
 			)
 		)
 		(property "Footprint" "REInnovationFootprint:TH_Resistor_1"
-			(at 37.592 52.07 90)
+			(at 66.802 49.53 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6010,7 +6010,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 39.37 52.07 0)
+			(at 68.58 49.53 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6021,7 +6021,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 39.37 52.07 0)
+			(at 68.58 49.53 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6032,7 +6032,7 @@
 			)
 		)
 		(property "Supplier 1" "Farnell"
-			(at 39.37 52.07 0)
+			(at 68.58 49.53 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6043,7 +6043,7 @@
 			)
 		)
 		(property "Supplier 1 Code" "2447662"
-			(at 39.37 52.07 0)
+			(at 68.58 49.53 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6054,7 +6054,7 @@
 			)
 		)
 		(property "Supplier 1 Web" "https://uk.farnell.com/multicomp/mcwr08x4700ftl/res-470r-1-0-125w-thick-film/dp/2447662?st=470r%200805"
-			(at 39.37 52.07 0)
+			(at 68.58 49.53 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6065,7 +6065,7 @@
 			)
 		)
 		(property "Manufacturer Part" "MCWR08X4700FTL"
-			(at 39.37 52.07 0)
+			(at 68.58 49.53 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6076,7 +6076,7 @@
 			)
 		)
 		(property "Supplier 1 Cost" "0.0077"
-			(at 39.37 52.07 0)
+			(at 68.58 49.53 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6087,7 +6087,7 @@
 			)
 		)
 		(property "LCSC" "C17710"
-			(at 39.37 52.07 0)
+			(at 68.58 49.53 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6098,7 +6098,7 @@
 			)
 		)
 		(property "JLCPCB Add" "Y"
-			(at 39.37 52.07 0)
+			(at 68.58 49.53 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6109,7 +6109,7 @@
 			)
 		)
 		(property "JLCPCB Cost" "0.0030"
-			(at 39.37 52.07 0)
+			(at 68.58 49.53 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
